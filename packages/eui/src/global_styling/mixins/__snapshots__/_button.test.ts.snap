@@ -1,0 +1,858 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useEuiButtonColorCSS base 1`] = `
+{
+  "accent": {
+    "map": undefined,
+    "name": "iw9nst-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#a11262;background-color:#FDDDE9;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(229,74,145, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(229,74,145, 0.16);
+          }
+        }
+   ;;label:base-accent;",
+    "toString": [Function],
+  },
+  "accentSecondary": {
+    "map": undefined,
+    "name": "2bsqr1-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#046e6b;background-color:#C9F3F0;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(0,176,170, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,176,170, 0.16);
+          }
+        }
+   ;;label:base-accentSecondary;",
+    "toString": [Function],
+  },
+  "danger": {
+    "map": undefined,
+    "name": "hpbqa7-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#a71627;background-color:#FDDDD8;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(238,76,72, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(238,76,72, 0.16);
+          }
+        }
+   ;;label:base-danger;",
+    "toString": [Function],
+  },
+  "disabled": {
+    "map": undefined,
+    "name": "1a6zqyi-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#798EAF;background-color:#ECF1F9;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: undefined;
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: undefined;
+          }
+        }
+   ;;label:base-disabled;",
+    "toString": [Function],
+  },
+  "neutral": {
+    "map": undefined,
+    "name": "1yg34tv-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#0f658a;background-color:#CFEEF7;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(13,161,201, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(13,161,201, 0.16);
+          }
+        }
+   ;;label:base-neutral;",
+    "toString": [Function],
+  },
+  "primary": {
+    "map": undefined,
+    "name": "igkusz-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#1750ba;background-color:#D9E8FF;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(55,136,255, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(55,136,255, 0.16);
+          }
+        }
+   ;;label:base-primary;",
+    "toString": [Function],
+  },
+  "risk": {
+    "map": undefined,
+    "name": "wow7ut-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#9e3a16;background-color:#FFDEBF;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(252,133,68, 0.16);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(252,133,68, 0.2);
+          }
+        }
+   ;;label:base-risk;",
+    "toString": [Function],
+  },
+  "success": {
+    "map": undefined,
+    "name": "17r4hv8-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#09724d;background-color:#C9F3E3;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(4,174,126, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(4,174,126, 0.16);
+          }
+        }
+   ;;label:base-success;",
+    "toString": [Function],
+  },
+  "text": {
+    "map": undefined,
+    "name": "1am2lf7-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#1d2a3e;background-color:#FFFFFF;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(23,80,186, 0.08);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(23,80,186, 0.12);
+          }
+        }
+   
+              border: 1px solid #CAD3E2;
+            ;;label:base-text;",
+    "toString": [Function],
+  },
+  "warning": {
+    "map": undefined,
+    "name": "1v3b4oo-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#825803;background-color:#FDE9B5;     
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(234,174,1, 0.16);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(234,174,1, 0.2);
+          }
+        }
+   ;;label:base-warning;",
+    "toString": [Function],
+  },
+}
+`;
+
+exports[`useEuiButtonColorCSS empty 1`] = `
+{
+  "accent": {
+    "map": undefined,
+    "name": "17z5qwe-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#a11262;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(229,74,145, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(229,74,145, 0.16);
+          }
+        }
+  ;;label:empty-accent;",
+    "toString": [Function],
+  },
+  "accentSecondary": {
+    "map": undefined,
+    "name": "utsfcv-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#046e6b;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(0,176,170, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,176,170, 0.16);
+          }
+        }
+  ;;label:empty-accentSecondary;",
+    "toString": [Function],
+  },
+  "danger": {
+    "map": undefined,
+    "name": "opz89a-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#a71627;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(238,76,72, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(238,76,72, 0.16);
+          }
+        }
+  ;;label:empty-danger;",
+    "toString": [Function],
+  },
+  "disabled": {
+    "map": undefined,
+    "name": "1hlgk57-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#798EAF;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: undefined;
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: undefined;
+          }
+        }
+  ;;label:empty-disabled;",
+    "toString": [Function],
+  },
+  "neutral": {
+    "map": undefined,
+    "name": "zxc0ya-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#0f658a;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(13,161,201, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(13,161,201, 0.16);
+          }
+        }
+  ;;label:empty-neutral;",
+    "toString": [Function],
+  },
+  "primary": {
+    "map": undefined,
+    "name": "1kjaxh0-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#1750ba;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(55,136,255, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(55,136,255, 0.16);
+          }
+        }
+  ;;label:empty-primary;",
+    "toString": [Function],
+  },
+  "risk": {
+    "map": undefined,
+    "name": "d7pn4b-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#9e3a16;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(252,133,68, 0.16);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(252,133,68, 0.2);
+          }
+        }
+  ;;label:empty-risk;",
+    "toString": [Function],
+  },
+  "success": {
+    "map": undefined,
+    "name": "pi9t03-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#09724d;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(4,174,126, 0.12);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(4,174,126, 0.16);
+          }
+        }
+  ;;label:empty-success;",
+    "toString": [Function],
+  },
+  "text": {
+    "map": undefined,
+    "name": "o4omlr-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#1d2a3e;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(23,80,186, 0.08);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(23,80,186, 0.12);
+          }
+        }
+  ;;label:empty-text;",
+    "toString": [Function],
+  },
+  "warning": {
+    "map": undefined,
+    "name": "1s2ubv0-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#825803;    
+    position: relative;
+        overflow: hidden;
+
+        &:hover:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            content: '';
+            position: absolute;
+            /* should stay under the content */
+            z-index: 0;
+            inset: 0;
+            background-color: rgba(234,174,1, 0.16);
+            pointer-events: none;
+          }
+        }
+
+        &:active:not(:disabled, [aria-disabled="true"]) {
+          &::before {
+            inline-size: 100%;
+            block-size: 100%;
+
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(234,174,1, 0.2);
+          }
+        }
+  ;;label:empty-warning;",
+    "toString": [Function],
+  },
+}
+`;
+
+exports[`useEuiButtonColorCSS fill 1`] = `
+{
+  "accent": {
+    "map": undefined,
+    "name": "3mx2qw-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#FFFFFF;background-color:#BC1E70;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #A11262;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #831652;
+      }
+  ;;label:fill-accent;",
+    "toString": [Function],
+  },
+  "accentSecondary": {
+    "map": undefined,
+    "name": "1xku66d-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#FFFFFF;background-color:#008B87;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #047471;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #065B58;
+      }
+  ;;label:fill-accentSecondary;",
+    "toString": [Function],
+  },
+  "danger": {
+    "map": undefined,
+    "name": "2oco3v-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#FFFFFF;background-color:#C61E25;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #A71627;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #7F1F27;
+      }
+  ;;label:fill-danger;",
+    "toString": [Function],
+  },
+  "disabled": {
+    "map": undefined,
+    "name": "fophfq-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#798EAF;background-color:#ECF1F9;outline-color:;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: undefined;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: undefined;
+      }
+  ;;label:fill-disabled;",
+    "toString": [Function],
+  },
+  "neutral": {
+    "map": undefined,
+    "name": "bbkhg6-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#FFFFFF;background-color:#1C8CB5;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #0F658A;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #055476;
+      }
+  ;;label:fill-neutral;",
+    "toString": [Function],
+  },
+  "primary": {
+    "map": undefined,
+    "name": "e636tq-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#FFFFFF;background-color:#0B64DD;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #1750BA;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #154399;
+      }
+  ;;label:fill-primary;",
+    "toString": [Function],
+  },
+  "risk": {
+    "map": undefined,
+    "name": "1ldxfkn-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#FFFFFF;background-color:#ED6723;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #DB541B;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #C24411;
+      }
+  ;;label:fill-risk;",
+    "toString": [Function],
+  },
+  "success": {
+    "map": undefined,
+    "name": "9ubir6-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#FFFFFF;background-color:#008A5E;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #09724D;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #0C5A3F;
+      }
+  ;;label:fill-success;",
+    "toString": [Function],
+  },
+  "text": {
+    "map": undefined,
+    "name": "3cvc1q-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#FFFFFF;background-color:#5A6D8C;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #485975;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #384861;
+      }
+  ;;label:fill-text;",
+    "toString": [Function],
+  },
+  "warning": {
+    "map": undefined,
+    "name": "fapwex-displaysColorsMap-display-color",
+    "next": undefined,
+    "styles": "color:#6A4906;background-color:#FACB3D;outline-color:#07101F;    
+    &:hover:not(:disabled, [aria-disabled="true"]) {
+        background-color: #F5BC00;
+      }
+
+      &:active:not(:disabled, [aria-disabled="true"]) {
+        background-color: #EAAE01;
+      }
+  ;;label:fill-warning;",
+    "toString": [Function],
+  },
+}
+`;
+
+exports[`useEuiButtonFocusCSS 1`] = `
+{
+  "map": undefined,
+  "name": "1w5psrn-focusCSS",
+  "next": undefined,
+  "styles": ";",
+  "toString": [Function],
+}
+`;

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EuiTableHeaderCellCheckbox is rendered 1`] = `
+<table>
+  <thead>
+    <tr>
+      <th
+        aria-label="aria-label"
+        class="euiTableHeaderCellCheckbox testClass1 testClass2 emotion-euiTableHeaderCellCheckbox-euiTestCss"
+        data-test-subj="test subject string"
+        scope="col"
+      >
+        <div
+          class="euiTableCellContent"
+        />
+      </th>
+    </tr>
+  </thead>
+</table>
+`;

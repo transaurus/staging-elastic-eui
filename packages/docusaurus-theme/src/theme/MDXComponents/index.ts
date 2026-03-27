@@ -1,0 +1,61 @@
+/*
+ * Copyright Elasticsearch B.V. and/or licensed to Elasticsearch B.V. under one
+ * or more contributor license agreements. Licensed under the Elastic License
+ * 2.0 and the Server Side Public License, v 1; you may not use this file except
+ * in compliance with, at your election, the Elastic License 2.0 or the Server
+ * Side Public License, v 1.
+ */
+
+import OriginalMDXComponents from '@theme-init/MDXComponents';
+import {
+  Badge,
+  Demo,
+  DemoSource,
+  FigmaEmbed,
+  Guideline,
+  GuidelineText,
+  Icon,
+  PropTable,
+} from '../../components';
+
+import { ListItem } from './ListItem';
+import { Blockquote } from './Blockquote';
+import { Paragraph } from './Paragraph';
+import { UnorderedList } from './UnorderedList';
+import { OrderedList } from './OrderedList';
+import { Table } from './Table';
+import { TableBody } from './TableBody';
+import { TableHeader } from './TableHeader';
+import { TableHeaderCell } from './TableHeaderCell';
+import { TableRow } from './TableRow';
+import { TableDataCell } from './TableDataCell';
+
+const MDXComponents = {
+  ...OriginalMDXComponents,
+  // Base content components
+  p: Paragraph,
+  li: ListItem,
+  ul: UnorderedList,
+  ol: OrderedList,
+  blockquote: Blockquote,
+
+  // Tables
+  table: Table,
+  tbody: TableBody,
+  thead: TableHeader,
+  tr: TableRow,
+  th: TableHeaderCell,
+  td: TableDataCell,
+
+  // Custom components
+  Badge,
+  Demo,
+  DemoSource,
+  FigmaEmbed,
+  Guideline,
+  GuidelineText,
+  Icon,
+  PropTable,
+};
+
+export default MDXComponents;

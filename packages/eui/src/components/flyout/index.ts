@@ -1,0 +1,44 @@
+/*
+ * Copyright Elasticsearch B.V. and/or licensed to Elasticsearch B.V. under one
+ * or more contributor license agreements. Licensed under the Elastic License
+ * 2.0 and the Server Side Public License, v 1; you may not use this file except
+ * in compliance with, at your election, the Elastic License 2.0 or the Server
+ * Side Public License, v 1.
+ */
+
+export type { EuiFlyoutProps, EuiFlyoutSize } from './flyout';
+export { EuiFlyout } from './flyout';
+
+export type { EuiFlyoutBodyProps } from './flyout_body';
+export { EuiFlyoutBody } from './flyout_body';
+
+export type { EuiFlyoutFooterProps } from './flyout_footer';
+export { EuiFlyoutFooter } from './flyout_footer';
+
+export type { EuiFlyoutHeaderProps } from './flyout_header';
+export { EuiFlyoutHeader } from './flyout_header';
+
+export { euiFlyoutSlideInRight, euiFlyoutSlideInLeft } from './flyout.styles';
+
+export type { EuiFlyoutResizableProps } from './flyout_resizable';
+export { EuiFlyoutResizable } from './flyout_resizable';
+
+export type {
+  EuiFlyoutMenuProps,
+  EuiFlyoutHistoryItem,
+  EuiFlyoutMenuCustomAction,
+} from './flyout_menu';
+export { EuiFlyoutMenu } from './flyout_menu';
+
+// Hooks for using Manager-based flyouts
+export { useIsInManagedFlyout, useHasActiveSession } from './manager';
+export { useIsInsideParentFlyout } from './flyout_parent_context';
+
+// Flyout manager store (for cross-root state synchronization)
+export {
+  getFlyoutManagerStore,
+  type FlyoutManagerStore,
+  type FlyoutManagerEvent,
+  type EuiFlyoutManagerState,
+  type FlyoutSession,
+} from './manager';

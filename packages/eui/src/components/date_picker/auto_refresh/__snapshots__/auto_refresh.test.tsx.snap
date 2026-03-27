@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EuiAutoRefresh is rendered 1`] = `
+<div
+  class="euiPopover euiInputPopover euiAutoRefresh testClass1 testClass2 emotion-euiPopover-block-EuiInputPopover-euiTestCss"
+>
+  <div
+    class="euiFormControlLayout euiFormControlLayout--group euiFormControlLayout-readOnly emotion-euiFormControlLayout-group"
+  >
+    <div
+      class="euiFormControlLayout__prepend emotion-euiFormControlLayout__side-readOnly"
+    >
+      <div
+        class="css-vmqubl-wrapper"
+      >
+        <button
+          aria-expanded="false"
+          class="euiFormPrepend euiFormControlLayout__prepend css-a31npo-side-uncompressed-empty-primary-isInteractive"
+        >
+          <span
+            data-euiicon-type="refreshTime"
+          />
+          <span
+            class="euiFormLabel eui-textTruncate emotion-euiFormLabel"
+          >
+            <strong>
+              Auto refresh
+            </strong>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="euiFormControlLayout__childrenWrapper emotion-euiFormControlLayout__childrenWrapper-inGroup"
+    >
+      <input
+        aria-label="aria-label"
+        class="euiFieldText emotion-euiFieldText-inGroup"
+        data-test-subj="test subject string"
+        readonly=""
+        type="text"
+        value="Off"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`EuiAutoRefresh isPaused is false 1`] = `
+<div
+  class="euiPopover euiInputPopover euiAutoRefresh emotion-euiPopover-block-EuiInputPopover"
+>
+  <div
+    class="euiFormControlLayout euiFormControlLayout--group euiFormControlLayout-readOnly emotion-euiFormControlLayout-group"
+  >
+    <div
+      class="euiFormControlLayout__prepend emotion-euiFormControlLayout__side-readOnly"
+    >
+      <div
+        class="css-vmqubl-wrapper"
+      >
+        <button
+          aria-expanded="false"
+          class="euiFormPrepend euiFormControlLayout__prepend css-a31npo-side-uncompressed-empty-primary-isInteractive"
+        >
+          <span
+            data-euiicon-type="refreshTime"
+          />
+          <span
+            class="euiFormLabel eui-textTruncate emotion-euiFormLabel"
+          >
+            <strong>
+              Auto refresh
+            </strong>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="euiFormControlLayout__childrenWrapper emotion-euiFormControlLayout__childrenWrapper-inGroup"
+    >
+      <input
+        aria-label="Auto refresh"
+        class="euiFieldText emotion-euiFieldText-inGroup"
+        readonly=""
+        type="text"
+        value="1 second"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`EuiAutoRefresh refreshInterval is rendered 1`] = `
+<div
+  class="euiPopover euiInputPopover euiAutoRefresh emotion-euiPopover-block-EuiInputPopover"
+>
+  <div
+    class="euiFormControlLayout euiFormControlLayout--group euiFormControlLayout-readOnly emotion-euiFormControlLayout-group"
+  >
+    <div
+      class="euiFormControlLayout__prepend emotion-euiFormControlLayout__side-readOnly"
+    >
+      <div
+        class="css-vmqubl-wrapper"
+      >
+        <button
+          aria-expanded="false"
+          class="euiFormPrepend euiFormControlLayout__prepend css-a31npo-side-uncompressed-empty-primary-isInteractive"
+        >
+          <span
+            data-euiicon-type="refreshTime"
+          />
+          <span
+            class="euiFormLabel eui-textTruncate emotion-euiFormLabel"
+          >
+            <strong>
+              Auto refresh
+            </strong>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="euiFormControlLayout__childrenWrapper emotion-euiFormControlLayout__childrenWrapper-inGroup"
+    >
+      <input
+        aria-label="Auto refresh"
+        class="euiFieldText emotion-euiFieldText-inGroup"
+        readonly=""
+        type="text"
+        value="2 seconds"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`EuiAutoRefreshButton is rendered 1`] = `
+<div
+  class="euiPopover emotion-euiPopover-inline-block"
+>
+  <button
+    aria-expanded="false"
+    aria-label="aria-label"
+    class="euiButtonEmpty euiAutoRefreshButton testClass1 testClass2 emotion-euiButtonDisplay-euiButtonEmpty-s-empty-text-euiTestCss"
+    data-test-subj="test subject string"
+    title="Auto refresh is off"
+    type="button"
+  >
+    <span
+      class="euiButtonEmpty__content emotion-euiButtonDisplayContent"
+    >
+      <span
+        color="inherit"
+        data-euiicon-type="refreshTime"
+      />
+      <span
+        class="eui-textTruncate euiButtonEmpty__text css-1ryezsz-s"
+      >
+        Off
+      </span>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`EuiAutoRefreshButton isPaused is false 1`] = `
+<div
+  class="euiPopover emotion-euiPopover-inline-block"
+>
+  <button
+    aria-expanded="false"
+    class="euiButtonEmpty euiAutoRefreshButton emotion-euiButtonDisplay-euiButtonEmpty-s-empty-text"
+    title="Auto refresh is on and set to 1 second"
+    type="button"
+  >
+    <span
+      class="euiButtonEmpty__content emotion-euiButtonDisplayContent"
+    >
+      <span
+        color="inherit"
+        data-euiicon-type="refreshTime"
+      />
+      <span
+        class="eui-textTruncate euiButtonEmpty__text css-1ryezsz-s"
+      >
+        1 second
+      </span>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`EuiAutoRefreshButton refreshInterval is rendered 1`] = `
+<div
+  class="euiPopover emotion-euiPopover-inline-block"
+>
+  <button
+    aria-expanded="false"
+    class="euiButtonEmpty euiAutoRefreshButton emotion-euiButtonDisplay-euiButtonEmpty-s-empty-text"
+    title="Auto refresh is on and set to 2 seconds"
+    type="button"
+  >
+    <span
+      class="euiButtonEmpty__content emotion-euiButtonDisplayContent"
+    >
+      <span
+        color="inherit"
+        data-euiicon-type="refreshTime"
+      />
+      <span
+        class="eui-textTruncate euiButtonEmpty__text css-1ryezsz-s"
+      >
+        2 seconds
+      </span>
+    </span>
+  </button>
+</div>
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EuiErrorBoundary without an error thrown does not render the UI 1`] = `
+<div>
+  No error
+</div>
+`;

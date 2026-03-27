@@ -1,0 +1,443 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`euiMarkdownFormat text colors accent 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: #BC1E70;
+    }
+
+    .euiHorizontalRule {
+      background-color: #BC1E70;
+      color: #BC1E70; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid #BC1E70;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid #BC1E70;
+
+      &:last-child {
+        border-inline-end: 1px solid #BC1E70;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid #BC1E70;
+    }
+  ;label:accent;"
+`;
+
+exports[`euiMarkdownFormat text colors accentSecondary 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: #008B87;
+    }
+
+    .euiHorizontalRule {
+      background-color: #008B87;
+      color: #008B87; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid #008B87;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid #008B87;
+
+      &:last-child {
+        border-inline-end: 1px solid #008B87;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid #008B87;
+    }
+  ;label:accentSecondary;"
+`;
+
+exports[`euiMarkdownFormat text colors custom 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: currentColor;
+    }
+
+    .euiHorizontalRule {
+      background-color: currentColor;
+      color: currentColor; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid currentColor;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid currentColor;
+
+      &:last-child {
+        border-inline-end: 1px solid currentColor;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid currentColor;
+    }
+  ;label:custom;"
+`;
+
+exports[`euiMarkdownFormat text colors danger 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: #C61E25;
+    }
+
+    .euiHorizontalRule {
+      background-color: #C61E25;
+      color: #C61E25; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid #C61E25;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid #C61E25;
+
+      &:last-child {
+        border-inline-end: 1px solid #C61E25;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid #C61E25;
+    }
+  ;label:danger;"
+`;
+
+exports[`euiMarkdownFormat text colors default 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: #CAD3E2;
+    }
+
+    .euiHorizontalRule {
+      background-color: #CAD3E2;
+      color: #CAD3E2; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid #CAD3E2;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid #CAD3E2;
+
+      &:last-child {
+        border-inline-end: 1px solid #CAD3E2;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid #CAD3E2;
+    }
+  ;label:default;"
+`;
+
+exports[`euiMarkdownFormat text colors ghost 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: #FFFFFF;
+    }
+
+    .euiHorizontalRule {
+      background-color: #FFFFFF;
+      color: #FFFFFF; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid #FFFFFF;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid #FFFFFF;
+
+      &:last-child {
+        border-inline-end: 1px solid #FFFFFF;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid #FFFFFF;
+    }
+  ;label:ghost;"
+`;
+
+exports[`euiMarkdownFormat text colors inherit 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: currentColor;
+    }
+
+    .euiHorizontalRule {
+      background-color: currentColor;
+      color: currentColor; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid currentColor;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid currentColor;
+
+      &:last-child {
+        border-inline-end: 1px solid currentColor;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid currentColor;
+    }
+  ;label:inherit;"
+`;
+
+exports[`euiMarkdownFormat text colors subdued 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: #516381;
+    }
+
+    .euiHorizontalRule {
+      background-color: #516381;
+      color: #516381; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid #516381;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid #516381;
+
+      &:last-child {
+        border-inline-end: 1px solid #516381;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid #516381;
+    }
+  ;label:subdued;"
+`;
+
+exports[`euiMarkdownFormat text colors success 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: #008A5E;
+    }
+
+    .euiHorizontalRule {
+      background-color: #008A5E;
+      color: #008A5E; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid #008A5E;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid #008A5E;
+
+      &:last-child {
+        border-inline-end: 1px solid #008A5E;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid #008A5E;
+    }
+  ;label:success;"
+`;
+
+exports[`euiMarkdownFormat text colors warning 1`] = `
+"
+    .euiMarkdownFormat__blockquote {
+      border-inline-start-color: #FACB3D;
+    }
+
+    .euiHorizontalRule {
+      background-color: #FACB3D;
+      color: #FACB3D; /* ensure that firefox gets the currentColor */
+    }
+
+    /* Tables */
+
+    .euiMarkdownFormat__table {
+      display: block;
+      inline-size: 100%;
+      overflow: auto;
+      border-spacing: 0;
+      border-collapse: collapse;
+      border-inline-start: 1px solid #FACB3D;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      border-block: 1px solid #FACB3D;
+
+      &:last-child {
+        border-inline-end: 1px solid #FACB3D;
+      }
+    }
+
+    .euiMarkdownFormat__table tr {
+      border-block-start: 1px solid #FACB3D;
+    }
+  ;label:warning;"
+`;
+
+exports[`euiMarkdownFormat text sizes m 1`] = `
+"
+    .euiMarkdownFormat__codeblockWrapper {
+      margin-block-end: 1.1429rem;
+    }
+
+    .euiMarkdownFormat__table {
+      margin-block-end: 1.1429rem;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      padding-block: 0.285725rem;
+      padding-inline: 0.57145rem;
+    }
+  ;label:m;"
+`;
+
+exports[`euiMarkdownFormat text sizes relative 1`] = `
+"
+    .euiMarkdownFormat__codeblockWrapper {
+      margin-block-end: 1em;
+    }
+
+    .euiMarkdownFormat__table {
+      margin-block-end: 1em;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      padding-block: 0.25em;
+      padding-inline: 0.5em;
+    }
+  ;label:relative;"
+`;
+
+exports[`euiMarkdownFormat text sizes s 1`] = `
+"
+    .euiMarkdownFormat__codeblockWrapper {
+      margin-block-end: 1.0000rem;
+    }
+
+    .euiMarkdownFormat__table {
+      margin-block-end: 1.0000rem;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      padding-block: 0.25rem;
+      padding-inline: 0.5rem;
+    }
+  ;label:s;"
+`;
+
+exports[`euiMarkdownFormat text sizes xs 1`] = `
+"
+    .euiMarkdownFormat__codeblockWrapper {
+      margin-block-end: 0.8571rem;
+    }
+
+    .euiMarkdownFormat__table {
+      margin-block-end: 0.8571rem;
+    }
+
+    .euiMarkdownFormat__table th,
+    .euiMarkdownFormat__table td {
+      padding-block: 0.214275rem;
+      padding-inline: 0.42855rem;
+    }
+  ;label:xs;"
+`;

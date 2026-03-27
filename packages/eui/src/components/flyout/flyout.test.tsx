@@ -1,0 +1,1054 @@
+/*
+ * Copyright Elasticsearch B.V. and/or licensed to Elasticsearch B.V. under one
+ * or more contributor license agreements. Licensed under the Elastic License
+ * 2.0 and the Server Side Public License, v 1; you may not use this file except
+ * in compliance with, at your election, the Elastic License 2.0 or the Server
+ * Side Public License, v 1.
+ */
+
+import React from 'react';
+import { render } from '../../test/rtl';
+import { requiredProps } from '../../test';
+import { shouldRenderCustomStyles } from '../../test/internal';
+
+import { EuiHeader } from '../header';
+import {
+  EuiFlyout,
+  FLYOUT_PADDING_SIZES,
+  FLYOUT_SIDES,
+  FLYOUT_SIZES,
+} from './flyout';
+import { EuiProvider } from '../provider';
+import { EuiFlyoutManager } from './manager';
+import { MENU_DISPLAY_ALWAYS } from './const';
+
+jest.mock('../overlay_mask', () => ({
+  EuiOverlayMask: ({
+    headerZindexLocation,
+    maskRef,
+    hasAnimation,
+    ...props
+  }: any) => <div {...props} ref={maskRef} />,
+}));
+
+jest.mock('../portal', () => ({
+  EuiPortal: ({ children }: { children: any }) => children,
+}));
+
+describe('EuiFlyout', () => {
+  shouldRenderCustomStyles(
+    <EuiFlyout {...requiredProps} onClose={() => {}} />,
+    { childProps: ['closeButtonProps', 'maskProps'] }
+  );
+
+  test('is rendered', () => {
+    const { baseElement } = render(
+      <EuiFlyout {...requiredProps} onClose={() => {}} />
+    );
+
+    expect(baseElement).toMatchSnapshot();
+  });
+
+  it('renders extra screen reader instructions when fixed EuiHeaders headers exist on the page', () => {
+    const { baseElement, queryByText, rerender } = render(
+      <>
+        <EuiHeader position="fixed" />
+        <EuiFlyout {...requiredProps} onClose={() => {}} />
+      </>
+    );
+
+    expect(baseElement).toMatchSnapshot();
+    expect(
+      queryByText('You can still continue tabbing through', { exact: false })
+    ).toBeTruthy();
+
+    // Should not shard or render instructions when `includeFixedHeadersInFocusTrap={false}
+    rerender(
+      <>
+        <EuiHeader position="fixed" />
+        <EuiFlyout onClose={() => {}} includeFixedHeadersInFocusTrap={false} />
+      </>
+    );
+    expect(
+      queryByText('You can still continue tabbing through', {
+        exact: false,
+      })
+    ).toBeFalsy();
+  });
+
+  it('renders extra screen reader instructions when specified selector exists on the page', () => {
+    const { queryByText } = render(
+      <>
+        <div data-custom-sidebar />
+        <EuiFlyout
+          {...requiredProps}
+          onClose={() => {}}
+          includeSelectorInFocusTrap={'[data-custom-sidebar]'}
+          includeFixedHeadersInFocusTrap={false}
+        />
+      </>
+    );
+
+    expect(
+      queryByText('You can still continue tabbing through', { exact: false })
+    ).toBeTruthy();
+  });
+
+  it('renders extra screen reader instructions for child flyouts', () => {
+    const { queryByText } = render(
+      <EuiFlyoutManager>
+        <EuiFlyout
+          onClose={() => {}}
+          session="start"
+          flyoutMenuProps={{ title: 'Main Flyout' }}
+          data-test-subj="main-flyout"
+          includeSelectorInFocusTrap={[]}
+          includeFixedHeadersInFocusTrap={false}
+        >
+          <EuiFlyout
+            onClose={() => {}}
+            data-test-subj="child-flyout"
+            includeSelectorInFocusTrap={[]}
+            includeFixedHeadersInFocusTrap={false}
+          />
+        </EuiFlyout>
+      </EuiFlyoutManager>
+    );
+
+    expect(
+      queryByText('You can still continue tabbing through', { exact: false })
+    ).toBeTruthy();
+  });
+
+  it('allows setting custom aria-describedby attributes', () => {
+    const { getByTestSubject } = render(
+      <>
+        <EuiFlyout
+          onClose={() => {}}
+          aria-describedby="custom-test-id"
+          data-test-subj="flyout"
+        />
+        <div id="custom-test-id" hidden>
+          This flyout does X, Y, and Z
+        </div>
+      </>
+    );
+    expect(getByTestSubject('flyout')).toHaveAttribute(
+      'aria-describedby',
+      'generated-id custom-test-id'
+    );
+  });
+
+  describe('aria-labelledby and flyout menu integration', () => {
+    it('sets aria-labelledby when flyout has a visible menu', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyout
+          onClose={() => {}}
+          flyoutMenuDisplayMode={MENU_DISPLAY_ALWAYS}
+          flyoutMenuProps={{ title: 'Test Menu Title' }}
+          data-test-subj="flyout"
+        />
+      );
+
+      const flyout = getByTestSubject('flyout');
+      const ariaLabelledBy = flyout.getAttribute('aria-labelledby');
+
+      // Should have a generated ID for the menu title
+      expect(ariaLabelledBy).toBeTruthy();
+      expect(ariaLabelledBy).toMatch(/^generated-id/);
+    });
+
+    it('uses custom titleId when provided in flyoutMenuProps', () => {
+      const customTitleId = 'my-custom-title-id';
+      const { getByTestSubject } = render(
+        <EuiFlyout
+          onClose={() => {}}
+          flyoutMenuDisplayMode={MENU_DISPLAY_ALWAYS}
+          flyoutMenuProps={{
+            title: 'Test Menu Title',
+            titleId: customTitleId,
+          }}
+          data-test-subj="flyout"
+        />
+      );
+
+      const flyout = getByTestSubject('flyout');
+      expect(flyout).toHaveAttribute('aria-labelledby', customTitleId);
+    });
+
+    it('combines flyout menu ID with existing aria-labelledby', () => {
+      const customTitleId = 'my-custom-title-id';
+      const existingAriaLabelledBy = 'existing-label-id';
+
+      const { getByTestSubject } = render(
+        <EuiFlyout
+          onClose={() => {}}
+          flyoutMenuDisplayMode={MENU_DISPLAY_ALWAYS}
+          flyoutMenuProps={{
+            title: 'Test Menu Title',
+            titleId: customTitleId,
+          }}
+          aria-labelledby={existingAriaLabelledBy}
+          data-test-subj="flyout"
+        />
+      );
+
+      const flyout = getByTestSubject('flyout');
+      expect(flyout).toHaveAttribute(
+        'aria-labelledby',
+        `${customTitleId} ${existingAriaLabelledBy}`
+      );
+    });
+
+    it('does not set aria-labelledby when flyout has no menu', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyout onClose={() => {}} data-test-subj="flyout" />
+      );
+
+      const flyout = getByTestSubject('flyout');
+      expect(flyout).not.toHaveAttribute('aria-labelledby');
+    });
+
+    it('only uses existing aria-labelledby when no menu is present', () => {
+      const existingAriaLabelledBy = 'existing-label-id';
+
+      const { getByTestSubject } = render(
+        <EuiFlyout
+          onClose={() => {}}
+          aria-labelledby={existingAriaLabelledBy}
+          data-test-subj="flyout"
+        />
+      );
+
+      const flyout = getByTestSubject('flyout');
+      expect(flyout).toHaveAttribute('aria-labelledby', existingAriaLabelledBy);
+    });
+  });
+
+  describe('flyoutMenuDisplayMode', () => {
+    describe('always mode', () => {
+      it('renders menu even when menu has no content', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            onClose={() => {}}
+            flyoutMenuProps={{}}
+            flyoutMenuDisplayMode={MENU_DISPLAY_ALWAYS}
+          />
+        );
+
+        expect(getByTestSubject('euiFlyoutMenu')).toBeInTheDocument();
+      });
+    });
+
+    describe('auto mode', () => {
+      it('renders menu when menu has content', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            onClose={() => {}}
+            flyoutMenuProps={{
+              customActions: [
+                {
+                  iconType: 'gear',
+                  onClick: () => {},
+                  'aria-label': 'Settings',
+                },
+              ],
+            }}
+          />
+        );
+
+        expect(getByTestSubject('euiFlyoutMenu')).toBeInTheDocument();
+      });
+
+      it('renders close button when menu has no content', () => {
+        const { getByTestSubject, queryByTestSubject } = render(
+          <EuiFlyout onClose={() => {}} flyoutMenuProps={{}} />
+        );
+
+        expect(getByTestSubject('euiFlyoutCloseButton')).toBeInTheDocument();
+        expect(queryByTestSubject('euiFlyoutMenu')).not.toBeInTheDocument();
+      });
+
+      it('renders no close button when hideCloseButton is true and menu has no content', () => {
+        const { queryByTestSubject } = render(
+          <EuiFlyout onClose={() => {}} flyoutMenuProps={{}} hideCloseButton />
+        );
+
+        expect(queryByTestSubject('euiFlyoutMenu')).not.toBeInTheDocument();
+        expect(
+          queryByTestSubject('euiFlyoutCloseButton')
+        ).not.toBeInTheDocument();
+      });
+    });
+
+    describe('aria-labelledby', () => {
+      it('includes menu titleId when menu is rendered', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            onClose={() => {}}
+            flyoutMenuDisplayMode={MENU_DISPLAY_ALWAYS}
+            flyoutMenuProps={{
+              title: 'Test',
+              titleId: 'menu-title',
+            }}
+            data-test-subj="flyout"
+          />
+        );
+        expect(getByTestSubject('flyout')).toHaveAttribute(
+          'aria-labelledby',
+          'menu-title'
+        );
+      });
+      it('excludes menu titleId when auto mode hides the menu', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            onClose={() => {}}
+            flyoutMenuProps={{ titleId: 'menu-title' }}
+            aria-labelledby="existing-label"
+            data-test-subj="flyout"
+          />
+        );
+        expect(getByTestSubject('flyout')).toHaveAttribute(
+          'aria-labelledby',
+          'existing-label'
+        );
+      });
+    });
+  });
+
+  describe('props', () => {
+    test('hideCloseButton', () => {
+      const { baseElement } = render(
+        <EuiFlyout onClose={() => {}} hideCloseButton />
+      );
+
+      expect(baseElement).toMatchSnapshot();
+    });
+
+    test('closeButtonProps', () => {
+      const { baseElement } = render(
+        <EuiFlyout onClose={() => {}} closeButtonProps={requiredProps} />
+      );
+
+      expect(baseElement).toMatchSnapshot();
+    });
+
+    test('closeButtonPosition can be outside', () => {
+      const { baseElement } = render(
+        <EuiFlyout onClose={() => {}} closeButtonPosition="outside" />
+      );
+
+      expect(baseElement).toMatchSnapshot();
+    });
+
+    test('accepts div props', () => {
+      const { baseElement } = render(
+        <EuiFlyout onClose={() => {}} id="imaflyout" />
+      );
+
+      expect(baseElement).toMatchSnapshot();
+    });
+
+    describe('pushAnimation', () => {
+      it('renders with animations by default', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout data-test-subj="flyout" onClose={() => {}} />
+        );
+
+        expect(getByTestSubject('flyout')).not.toHaveStyleRule(
+          'animation-duration',
+          '0s!important'
+        );
+      });
+
+      it('can render without animations', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            data-test-subj="flyout"
+            onClose={() => {}}
+            hasAnimation={false}
+          />
+        );
+
+        expect(getByTestSubject('flyout')).toHaveStyleRule(
+          'animation-duration',
+          '0s!important'
+        );
+      });
+    });
+
+    describe('hasAnimation', () => {
+      it('renders with animations by default', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout data-test-subj="flyout" onClose={() => {}} />
+        );
+
+        expect(getByTestSubject('flyout')).not.toHaveStyleRule(
+          'animation-duration',
+          '0s!important'
+        );
+      });
+
+      it('can render without animations', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            data-test-subj="flyout"
+            onClose={() => {}}
+            hasAnimation={false}
+          />
+        );
+
+        expect(getByTestSubject('flyout')).toHaveStyleRule(
+          'animation-duration',
+          '0s!important'
+        );
+      });
+    });
+
+    describe('sides', () => {
+      FLYOUT_SIDES.forEach((side) => {
+        it(`${side} is rendered`, () => {
+          const { baseElement } = render(
+            <EuiFlyout onClose={() => {}} side={side} />
+          );
+
+          expect(baseElement).toMatchSnapshot();
+        });
+      });
+    });
+
+    describe('push flyouts', () => {
+      it('renders', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            data-test-subj="flyout"
+            onClose={() => {}}
+            type="push"
+            pushMinBreakpoint="xs"
+          />
+        );
+
+        expect(getByTestSubject('flyout')).toMatchSnapshot();
+      });
+
+      it('renders without animations by default', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            data-test-subj="flyout"
+            onClose={() => {}}
+            type="push"
+            pushMinBreakpoint="xs"
+          />
+        );
+
+        expect(getByTestSubject('flyout')).toHaveStyleRule(
+          'animation-duration',
+          '0s!important'
+        );
+      });
+
+      it('can render with animations', () => {
+        const { getByTestSubject } = render(
+          <EuiFlyout
+            data-test-subj="flyout"
+            onClose={() => {}}
+            type="push"
+            pushMinBreakpoint="xs"
+            hasAnimation={true}
+          />
+        );
+
+        expect(getByTestSubject('flyout')).not.toHaveStyleRule(
+          'animation-duration',
+          '0s!important'
+        );
+      });
+    });
+
+    test('is rendered as nav', () => {
+      const { baseElement } = render(<EuiFlyout onClose={() => {}} as="nav" />);
+
+      expect(baseElement).toMatchSnapshot();
+    });
+
+    describe('size', () => {
+      FLYOUT_SIZES.forEach((size) => {
+        it(`${size} is rendered`, () => {
+          const { baseElement } = render(
+            <EuiFlyout onClose={() => {}} size={size} />
+          );
+
+          expect(baseElement).toMatchSnapshot();
+        });
+      });
+
+      it('accepts custom number', () => {
+        const { baseElement } = render(
+          <EuiFlyout onClose={() => {}} size={500} />
+        );
+
+        expect(baseElement).toMatchSnapshot();
+      });
+    });
+
+    describe('paddingSize', () => {
+      FLYOUT_PADDING_SIZES.forEach((paddingSize) => {
+        it(`${paddingSize} is rendered`, () => {
+          const { baseElement } = render(
+            <EuiFlyout onClose={() => {}} paddingSize={paddingSize} />
+          );
+
+          expect(baseElement).toMatchSnapshot();
+        });
+      });
+    });
+
+    describe('maxWidth', () => {
+      test('can be set to a default', () => {
+        const { baseElement } = render(
+          <EuiFlyout onClose={() => {}} maxWidth={true} />
+        );
+
+        expect(baseElement).toMatchSnapshot();
+      });
+
+      test('can be set to a custom number', () => {
+        const { baseElement } = render(
+          <EuiFlyout onClose={() => {}} maxWidth={1024} />
+        );
+
+        expect(baseElement).toMatchSnapshot();
+      });
+
+      test('can be set to a custom value and measurement', () => {
+        const { baseElement } = render(
+          <EuiFlyout onClose={() => {}} maxWidth="24rem" />
+        );
+
+        expect(baseElement).toMatchSnapshot();
+      });
+    });
+
+    test('outsideClickCloses', () => {
+      const { baseElement } = render(
+        <EuiFlyout onClose={() => {}} outsideClickCloses />
+      );
+
+      expect(baseElement).toMatchSnapshot();
+    });
+
+    describe('ownFocus', () => {
+      test('can be false', () => {
+        const { baseElement } = render(
+          <EuiFlyout onClose={() => {}} ownFocus={false} />
+        );
+
+        expect(baseElement).toMatchSnapshot();
+      });
+
+      test('can alter mask props with maskProps without throwing error', () => {
+        const { baseElement } = render(
+          <EuiFlyout
+            onClose={() => {}}
+            maskProps={{ headerZindexLocation: 'above' }}
+          />
+        );
+
+        expect(baseElement).toMatchSnapshot();
+      });
+    });
+
+    describe('body class', () => {
+      it('adds `.euiBody--hasFlyout` class on mount', () => {
+        render(<EuiFlyout onClose={() => {}} />);
+        expect(document.body).toHaveClass('euiBody--hasFlyout');
+      });
+
+      it('removes `.euiBody--hasFlyout` class on unmount', () => {
+        const { unmount } = render(<EuiFlyout onClose={() => {}} />);
+        unmount();
+        expect(document.body).not.toHaveClass('euiBody--hasFlyout');
+      });
+
+      // Regression testing
+      it('should not remove and re-add `.euiBody--hasFlyout` class on resize', async () => {
+        const add = jest.spyOn(document.body.classList, 'add');
+        const remove = jest.spyOn(document.body.classList, 'remove');
+        const { rerender } = render(
+          <EuiFlyout onClose={() => {}} size={500} />
+        );
+
+        expect(add).toHaveBeenCalledTimes(1);
+        expect(add).toHaveBeenLastCalledWith('euiBody--hasFlyout');
+
+        rerender(<EuiFlyout onClose={() => {}} size={600} />);
+        expect(add).toHaveBeenCalledTimes(1);
+        expect(remove).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('component defaults', () => {
+    test('includeSelectorInFocusTrap', () => {
+      const { queryByText } = render(
+        <EuiProvider
+          componentDefaults={{
+            EuiFlyout: {
+              includeSelectorInFocusTrap: ['[data-custom-sidebar]'],
+            },
+          }}
+        >
+          <div data-custom-sidebar />
+          <EuiFlyout {...requiredProps} onClose={() => {}} />
+        </EuiProvider>,
+        {
+          wrapper: undefined,
+        }
+      );
+
+      expect(
+        queryByText('You can still continue tabbing through', { exact: false })
+      ).toBeTruthy();
+    });
+
+    test('includeFixedHeadersInFocusTrap', () => {
+      const { queryByText } = render(
+        <EuiProvider
+          componentDefaults={{
+            EuiFlyout: {
+              includeFixedHeadersInFocusTrap: false,
+            },
+          }}
+        >
+          <EuiHeader position="fixed" />
+          <EuiFlyout {...requiredProps} onClose={() => {}} />
+        </EuiProvider>,
+        {
+          wrapper: undefined,
+        }
+      );
+
+      expect(
+        queryByText('You can still continue tabbing through', { exact: false })
+      ).not.toBeTruthy();
+    });
+  });
+
+  describe('push padding manager state coordination', () => {
+    it('applies body padding for push flyouts', () => {
+      const { container } = render(
+        <EuiFlyout
+          onClose={() => {}}
+          type="push"
+          pushMinBreakpoint="xs"
+          data-test-subj="push-flyout"
+        />
+      );
+
+      const flyout = container.querySelector('[data-test-subj="push-flyout"]');
+      expect(flyout).toBeInTheDocument();
+
+      // Body should have padding applied
+      const bodyPaddingEnd = document.body.style.paddingInlineEnd;
+      expect(bodyPaddingEnd).toBeTruthy();
+    });
+
+    it('removes body padding on unmount', () => {
+      const { unmount } = render(
+        <EuiFlyout
+          onClose={() => {}}
+          type="push"
+          pushMinBreakpoint="xs"
+          data-test-subj="push-flyout"
+        />
+      );
+
+      // Verify padding was applied
+      expect(document.body.style.paddingInlineEnd).toBeTruthy();
+
+      unmount();
+
+      // Verify padding was cleared
+      expect(document.body.style.paddingInlineEnd).toBe('');
+    });
+
+    afterEach(() => {
+      // Clean up body styles after each test
+      document.body.style.paddingInlineStart = '';
+      document.body.style.paddingInlineEnd = '';
+    });
+  });
+
+  describe('flyout routing logic', () => {
+    it('routes to child flyout automatically when nested inside a parent flyout', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            onClose={() => {}}
+            session="start"
+            flyoutMenuProps={{ title: 'Main Flyout' }}
+            data-test-subj="main-flyout"
+          >
+            {/* Child flyout nested inside parent - should auto-inherit */}
+            <EuiFlyout onClose={() => {}} data-test-subj="child-flyout" />
+          </EuiFlyout>
+        </EuiFlyoutManager>
+      );
+
+      // Main flyout should be rendered as managed
+      const mainFlyout = getByTestSubject('main-flyout');
+      expect(mainFlyout).toHaveAttribute('data-managed-flyout-level', 'main');
+
+      // Child flyout should automatically become a managed child
+      const childFlyout = getByTestSubject('child-flyout');
+      expect(childFlyout).toHaveAttribute('data-managed-flyout-level', 'child');
+    });
+
+    it('routes to child flyout when session is explicitly "inherit" and there is an active session', () => {
+      // First render with just the main flyout to establish a session
+      const { rerender, getByTestSubject } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            onClose={() => {}}
+            session="start"
+            flyoutMenuProps={{ title: 'Main Flyout' }}
+            data-test-subj="main-flyout"
+          />
+        </EuiFlyoutManager>
+      );
+
+      // Now render with the child flyout added - it should detect the active session
+      rerender(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            onClose={() => {}}
+            session="start"
+            flyoutMenuProps={{ title: 'Main Flyout' }}
+            data-test-subj="main-flyout"
+          />
+          <EuiFlyout
+            onClose={() => {}}
+            data-test-subj="child-flyout"
+            session="inherit"
+          />
+        </EuiFlyoutManager>
+      );
+
+      // Should render as child flyout (EuiFlyoutChild)
+      const childFlyout = getByTestSubject('child-flyout');
+      expect(childFlyout).toHaveAttribute('data-managed-flyout-level', 'child');
+    });
+
+    it('routes to main flyout when session is explicitly true', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            onClose={() => {}}
+            data-test-subj="flyout"
+            session="start" // Explicitly creating a new session
+            flyoutMenuProps={{ title: 'Test Main Flyout' }} // Required for managed flyouts
+          />
+        </EuiFlyoutManager>
+      );
+
+      // Should render as main flyout (EuiFlyoutMain)
+      const flyout = getByTestSubject('flyout');
+      expect(flyout).toHaveAttribute('data-managed-flyout-level', 'main');
+    });
+
+    it('routes to standard flyout when session is explicitly "never" and there is an active session', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          {/* Create an active session */}
+          <EuiFlyout
+            onClose={() => {}}
+            session="start"
+            flyoutMenuProps={{ title: 'Main Flyout' }}
+            data-test-subj="main-flyout"
+          />
+          {/* This flyout explicitly opts out of session management */}
+          <EuiFlyout
+            onClose={() => {}}
+            data-test-subj="standard-flyout"
+            session="never" // Explicitly opts out of session management
+          />
+        </EuiFlyoutManager>
+      );
+
+      // Should render as standard flyout (EuiFlyoutComponent)
+      const flyout = getByTestSubject('standard-flyout');
+      expect(flyout).not.toHaveAttribute('data-managed-flyout-level');
+    });
+
+    it('routes to standard flyout when session="never" explicitly set and there is an active session', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          {/* Create an active session */}
+          <EuiFlyout
+            onClose={() => {}}
+            session="start"
+            flyoutMenuProps={{ title: 'Main Flyout' }}
+            data-test-subj="main-flyout"
+          />
+          {/* This flyout explicitly opts out of session management */}
+          <EuiFlyout
+            onClose={() => {}}
+            session="never"
+            data-test-subj="standard-flyout"
+          />
+        </EuiFlyoutManager>
+      );
+
+      // Should render as standard flyout (EuiFlyoutComponent)
+      const flyout = getByTestSubject('standard-flyout');
+      expect(flyout).not.toHaveAttribute('data-managed-flyout-level');
+    });
+
+    it('routes to standard flyout when not nested inside a parent flyout', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          {/* Create an active session */}
+          <EuiFlyout
+            onClose={() => {}}
+            session="start"
+            flyoutMenuProps={{ title: 'Main Flyout' }}
+            data-test-subj="main-flyout"
+          />
+          {/* This flyout is not nested inside the parent, so it doesn't auto-inherit */}
+          <EuiFlyout onClose={() => {}} data-test-subj="standard-flyout" />
+        </EuiFlyoutManager>
+      );
+
+      // Should render as standard flyout (EuiFlyoutComponent)
+      const flyout = getByTestSubject('standard-flyout');
+      expect(flyout).not.toHaveAttribute('data-managed-flyout-level');
+    });
+
+    it('routes to child flyout when session is explicitly "inherit" across React roots', () => {
+      // This test demonstrates cross-root behavior: child is not nested in JSX tree
+      // but can still inherit via explicit session="inherit"
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            onClose={() => {}}
+            session="start"
+            flyoutMenuProps={{ title: 'Main Flyout' }}
+            data-test-subj="main-flyout"
+          />
+          {/* Not nested, but using explicit session="inherit" */}
+          <EuiFlyout
+            onClose={() => {}}
+            data-test-subj="child-flyout"
+            session="inherit"
+          />
+        </EuiFlyoutManager>
+      );
+
+      // Main flyout should be managed
+      const mainFlyout = getByTestSubject('main-flyout');
+      expect(mainFlyout).toHaveAttribute('data-managed-flyout-level', 'main');
+
+      // Child flyout should become managed via explicit inherit
+      const flyout = getByTestSubject('child-flyout');
+      expect(flyout).toHaveAttribute('data-managed-flyout-level', 'child');
+    });
+
+    it('routes to standard flyout when there is no active session', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyout
+          onClose={() => {}}
+          data-test-subj="flyout"
+          session={undefined} // Not explicitly set
+        />
+      );
+
+      // Should render as standard flyout (EuiFlyoutComponent) - no manager context
+      const flyout = getByTestSubject('flyout');
+      expect(flyout).not.toHaveAttribute('data-managed-flyout-level');
+    });
+
+    it('routes to standard flyout when session="inherit" but there is no active session', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyout
+          onClose={() => {}}
+          data-test-subj="flyout"
+          session="inherit" // Explicitly set to inherit, but no session to inherit from
+        />
+      );
+
+      // Should gracefully degrade to standard flyout (EuiFlyoutComponent) when no session exists
+      const flyout = getByTestSubject('flyout');
+      expect(flyout).not.toHaveAttribute('data-managed-flyout-level');
+    });
+
+    it('routes to standard flyout when session="inherit" within Manager but no active session', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            onClose={() => {}}
+            data-test-subj="flyout"
+            session="inherit" // Manager context exists but no main flyout has been created
+          />
+        </EuiFlyoutManager>
+      );
+
+      // Should gracefully degrade to standard flyout when Manager exists but no session is active
+      const flyout = getByTestSubject('flyout');
+      expect(flyout).not.toHaveAttribute('data-managed-flyout-level');
+    });
+
+    it('routes to standard flyout when nested but parent uses session="never"', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            onClose={() => {}}
+            session="never"
+            data-test-subj="parent-flyout"
+          >
+            {/* Nested, but parent is not managed, so no auto-inheritance */}
+            <EuiFlyout onClose={() => {}} data-test-subj="child-flyout" />
+          </EuiFlyout>
+        </EuiFlyoutManager>
+      );
+
+      // Parent should be standard flyout
+      const parentFlyout = getByTestSubject('parent-flyout');
+      expect(parentFlyout).not.toHaveAttribute('data-managed-flyout-level');
+
+      // Child should also be standard flyout (no session to inherit from)
+      const childFlyout = getByTestSubject('child-flyout');
+      expect(childFlyout).not.toHaveAttribute('data-managed-flyout-level');
+    });
+
+    it('accepts historyKey prop with session="start" and renders without error', () => {
+      const sharedKey = Symbol();
+      const { getByRole } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            session="start"
+            historyKey={sharedKey}
+            onClose={() => {}}
+            flyoutMenuProps={{ title: 'Main Flyout' }}
+            aria-label="Test flyout"
+          >
+            Content
+          </EuiFlyout>
+        </EuiFlyoutManager>
+      );
+      const dialog = getByRole('dialog');
+      expect(dialog).toBeInTheDocument();
+      expect(dialog).toHaveAttribute('aria-label', 'Test flyout');
+      expect(dialog).toHaveAttribute('data-managed-flyout-level', 'main');
+    });
+  });
+
+  describe('ref forwarding', () => {
+    it('forwards ref when session="start"', () => {
+      const ref = React.createRef<HTMLDivElement>();
+      render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            session="start"
+            onClose={() => {}}
+            ref={ref}
+            aria-label="Test flyout"
+          >
+            Content
+          </EuiFlyout>
+        </EuiFlyoutManager>
+      );
+
+      expect(ref.current).toBeInstanceOf(HTMLElement);
+      // Verify it points to the flyout container (which has role="dialog")
+      expect(ref.current).toHaveAttribute('role', 'dialog');
+    });
+
+    it('forwards ref when session="inherit" (child flyout)', () => {
+      const childRef = React.createRef<HTMLDivElement>();
+
+      const TestComponent = () => (
+        <EuiFlyoutManager>
+          <EuiFlyout
+            session="start"
+            onClose={() => {}}
+            aria-label="Parent flyout"
+          >
+            <EuiFlyout
+              session="inherit"
+              onClose={() => {}}
+              ref={childRef}
+              aria-label="Child flyout"
+            >
+              Child Content
+            </EuiFlyout>
+          </EuiFlyout>
+        </EuiFlyoutManager>
+      );
+
+      render(<TestComponent />);
+
+      expect(childRef.current).toBeInstanceOf(HTMLElement);
+      expect(childRef.current).not.toHaveAttribute('role', 'dialog');
+      expect(childRef.current).toHaveAttribute('aria-label', 'Child flyout');
+    });
+
+    it('forwards ref when session is undefined (standard flyout)', () => {
+      const ref = React.createRef<HTMLDivElement>();
+      render(
+        <EuiFlyout onClose={() => {}} ref={ref} aria-label="Standard flyout">
+          Content
+        </EuiFlyout>
+      );
+
+      expect(ref.current).toBeInstanceOf(HTMLElement);
+      expect(ref.current).toHaveAttribute('role', 'dialog');
+    });
+  });
+
+  describe('child flyout aria-modal behavior', () => {
+    it('assigns role="dialog" and aria-modal to main flyout when no child is open', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            session="start"
+            onClose={() => {}}
+            data-test-subj="parent-flyout"
+          />
+        </EuiFlyoutManager>
+      );
+
+      const parentFlyout = getByTestSubject('parent-flyout');
+      expect(parentFlyout).toHaveAttribute('role', 'dialog');
+      expect(parentFlyout).toHaveAttribute('aria-modal', 'true');
+    });
+
+    it('assigns role="dialog" and aria-modal to main flyout only when child is open', () => {
+      const { getByTestSubject } = render(
+        <EuiFlyoutManager>
+          <EuiFlyout
+            session="start"
+            onClose={() => {}}
+            data-test-subj="parent-flyout"
+          >
+            <EuiFlyout
+              session="inherit"
+              onClose={() => {}}
+              data-test-subj="child-flyout"
+            />
+          </EuiFlyout>
+        </EuiFlyoutManager>
+      );
+
+      const parentFlyout = getByTestSubject('parent-flyout');
+      const childFlyout = getByTestSubject('child-flyout');
+
+      // Main keeps dialog semantics
+      expect(parentFlyout).toHaveAttribute('role', 'dialog');
+      expect(parentFlyout).toHaveAttribute('aria-modal', 'true');
+
+      // Child defers to main (side-by-side mode is default)
+      expect(childFlyout).not.toHaveAttribute('role', 'dialog');
+      expect(childFlyout).not.toHaveAttribute('aria-modal');
+    });
+  });
+});

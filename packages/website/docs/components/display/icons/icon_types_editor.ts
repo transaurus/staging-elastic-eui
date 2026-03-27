@@ -1,0 +1,28 @@
+import { IconType } from '@elastic/eui';
+
+export const iconTypesEditor: Array<IconType> = [
+  'textAlignCenter',
+  'textAlignLeft',
+  'textAlignRight',
+  'textBold',
+  'listCheck',
+  'distributeHorizontal',
+  'distributeVertical',
+  'textHeading',
+  'textItalic',
+  'alignBottom',
+  'alignCenterHorizontal',
+  'alignLeft',
+  'alignCenterVertical',
+  'alignRight',
+  'alignTop',
+  'listNumber',
+  'alignBottomLeft',
+  'alignBottomRight',
+  'alignTopLeft',
+  'alignTopRight',
+  'redo',
+  'textStrike',
+  'textUnderline',
+  'undo',
+];

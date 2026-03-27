@@ -1,0 +1,8 @@
+## 🏠/.buildkite/pipelines/pipeline_pull_request_test_and_deploy.yml
+
+steps:
+  - trigger: "eui-pull-request-test"
+    label: ":hammer: EUI pull request test"
+    build:
+      branch: "${BUILDKITE_BRANCH}"
+      commit: "${BUILDKITE_COMMIT}"

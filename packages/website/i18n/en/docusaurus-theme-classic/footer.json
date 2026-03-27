@@ -1,0 +1,6 @@
+{
+  "copyright": {
+    "message": "\n        EUI is dual-licensed under <a href=\"https://github.com/elastic/eui/blob/main/licenses/ELASTIC-LICENSE-2.0.md\" target=\"_blank\" rel=\"noreferrer\">Elastic License 2.0</a>\n        and <a href=\"https://github.com/elastic/eui/blob/main/licenses/SSPL-LICENSE.md\" target=\"_blank\" rel=\"noreferrer\">Server Side Public License, v1</a>\n        | Crafted with ❤️ by <a href=\"https://elastic.co\" target=\"_blank\" rel=\"noreferrer\">Elastic</a>\n      ",
+    "description": "The footer copyright"
+  }
+}

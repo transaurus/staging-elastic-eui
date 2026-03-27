@@ -1,0 +1,126 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.getting-started.category.Theming": {
+    "message": "Theming",
+    "description": "The label for category Theming in sidebar getting-started"
+  },
+  "sidebar.getting-started.category.Tokens": {
+    "message": "Tokens",
+    "description": "The label for category Tokens in sidebar getting-started"
+  },
+  "sidebar.getting-started.category.Typography": {
+    "message": "Typography",
+    "description": "The label for category Typography in sidebar getting-started"
+  },
+  "sidebar.getting-started.category.Utilities": {
+    "message": "Utilities",
+    "description": "The label for category Utilities in sidebar getting-started"
+  },
+  "sidebar.getting-started.category.Working with Emotion": {
+    "message": "Working with Emotion",
+    "description": "The label for category Working with Emotion in sidebar getting-started"
+  },
+  "sidebar.getting-started.category.Testing": {
+    "message": "Testing",
+    "description": "The label for category Testing in sidebar getting-started"
+  },
+  "sidebar.components.category.Layout": {
+    "message": "Layout",
+    "description": "The label for category Layout in sidebar components"
+  },
+  "sidebar.components.category.Flex": {
+    "message": "Flex",
+    "description": "The label for category Flex in sidebar components"
+  },
+  "sidebar.components.category.Containers": {
+    "message": "Containers",
+    "description": "The label for category Containers in sidebar components"
+  },
+  "sidebar.components.category.Navigation": {
+    "message": "Navigation",
+    "description": "The label for category Navigation in sidebar components"
+  },
+  "sidebar.components.category.Buttons": {
+    "message": "Buttons",
+    "description": "The label for category Buttons in sidebar components"
+  },
+  "sidebar.components.category.Display": {
+    "message": "Display",
+    "description": "The label for category Display in sidebar components"
+  },
+  "sidebar.components.category.Forms": {
+    "message": "Forms",
+    "description": "The label for category Forms in sidebar components"
+  },
+  "sidebar.components.category.Form layouts": {
+    "message": "Form layouts",
+    "description": "The label for category Form layouts in sidebar components"
+  },
+  "sidebar.components.category.Text controls": {
+    "message": "Text controls",
+    "description": "The label for category Text controls in sidebar components"
+  },
+  "sidebar.components.category.Numeric controls": {
+    "message": "Numeric controls",
+    "description": "The label for category Numeric controls in sidebar components"
+  },
+  "sidebar.components.category.Selection controls": {
+    "message": "Selection controls",
+    "description": "The label for category Selection controls in sidebar components"
+  },
+  "sidebar.components.category.Search and filter controls": {
+    "message": "Search and filter controls",
+    "description": "The label for category Search and filter controls in sidebar components"
+  },
+  "sidebar.components.category.Date and time controls": {
+    "message": "Date and time controls",
+    "description": "The label for category Date and time controls in sidebar components"
+  },
+  "sidebar.components.category.Other controls": {
+    "message": "Other controls",
+    "description": "The label for category Other controls in sidebar components"
+  },
+  "sidebar.components.category.Data grid": {
+    "message": "Data grid",
+    "description": "The label for category Data grid in sidebar components"
+  },
+  "sidebar.components.category.Advanced use cases": {
+    "message": "Advanced use cases",
+    "description": "The label for category Advanced use cases in sidebar components"
+  },
+  "sidebar.components.category.Tables": {
+    "message": "Tables",
+    "description": "The label for category Tables in sidebar components"
+  },
+  "sidebar.components.category.Templates": {
+    "message": "Templates",
+    "description": "The label for category Templates in sidebar components"
+  },
+  "sidebar.components.category.Page template": {
+    "message": "Page template",
+    "description": "The label for category Page template in sidebar components"
+  },
+  "sidebar.components.category.Editors and syntax": {
+    "message": "Editors and syntax",
+    "description": "The label for category Editors and syntax in sidebar components"
+  },
+  "sidebar.components.category.Markdown": {
+    "message": "Markdown",
+    "description": "The label for category Markdown in sidebar components"
+  },
+  "sidebar.patterns.category.Error messages": {
+    "message": "Error messages",
+    "description": "The label for category Error messages in sidebar patterns"
+  },
+  "sidebar.patterns.category.Tables": {
+    "message": "Tables",
+    "description": "The label for category Tables in sidebar patterns"
+  },
+  "sidebar.dataviz.category.Types": {
+    "message": "Types",
+    "description": "The label for category Types in sidebar dataviz"
+  }
+}

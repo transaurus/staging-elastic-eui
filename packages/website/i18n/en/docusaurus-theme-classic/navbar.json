@@ -1,0 +1,42 @@
+{
+  "title": {
+    "message": "Elastic UI",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Elastic UI",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Getting started": {
+    "message": "Getting started",
+    "description": "Navbar item with label Getting started"
+  },
+  "item.label.Components": {
+    "message": "Components",
+    "description": "Navbar item with label Components"
+  },
+  "item.label.Utilities": {
+    "message": "Utilities",
+    "description": "Navbar item with label Utilities"
+  },
+  "item.label.Patterns": {
+    "message": "Patterns",
+    "description": "Navbar item with label Patterns"
+  },
+  "item.label.Content": {
+    "message": "Content",
+    "description": "Navbar item with label Content"
+  },
+  "item.label.Data visualization": {
+    "message": "Data visualization",
+    "description": "Navbar item with label Data visualization"
+  },
+  "item.label.EUI Changelog": {
+    "message": "EUI Changelog",
+    "description": "Navbar item with label EUI Changelog"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}
